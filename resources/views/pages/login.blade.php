@@ -77,7 +77,7 @@
                             // Set the cookie using a library like js-cookie or the native `document.cookie`
                             const date = new Date();
                             date.setTime(date.getTime() + (data.expires_in)); // 1 hour in milliseconds
-                            document.cookie = `token=${data.access_token}; path=/; expires=${date.toUTCString()}; secure; samesite=strict;`;
+                            document.cookie = `token=${data.access_token}; path=/; expires=${date.toUTCString()}; samesite=Lax;`;
 
                             if (data.role == 1) {
                                 window.location.href = "/admin/dashboard";
