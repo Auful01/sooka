@@ -1,0 +1,209 @@
+/* Colors */
+:root {
+    --primary-color: #dd4470; /* Ungu */
+    --secondary-color: #fe72a9; /* Orange yang hangat */
+    --accent-color: #c6df76; /* Kuning cerah untuk aksen */
+    --background-light: #ffe3b3; /* Warna latar belakang yang lembut */
+    --background-dark: #343a40; /* Warna latar belakang gelap */
+    --text-color: #333; /* Warna teks utama */
+    --text-light: #ffffff; /* Teks terang */
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.bg-overlay {
+    position: relative;
+}
+
+
+/* @media (max-width: 768px) {
+    .body-container {
+        display: none;
+    }
+    .mobile-block-message {
+        display: block !important;
+        text-align: center;
+        padding: 20px;
+        color: #ff0000;
+        font-weight: bold;
+        background-color: #fff;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+} */
+
+
+
+.bg-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px); /* Change the value to increase or decrease the blur */
+    background-color: rgba(0, 0, 0, 0.229); /* Change the color and opacity */
+    z-index: 1;
+}
+
+.cstm-form::placeholder{
+    color: #fff;
+}
+
+.cstm-form{
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cstm-form:focus{
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    box-shadow: 0 0 5px #fe72aab6;
+    border: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    /* background-color: var(--background-light); */
+}
+
+/* h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+} */
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+
+.btn:hover{
+    background-color: var(--background-light);
+    border-color: var(--background-light);
+    color: #fff;
+}
+
+
+.bt-accent{
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+.bt-secondary{
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+}
+
+.bt-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+.txt-primary {
+    color: var(--primary-color);
+}
+
+.txt-secondary {
+    color: var(--secondary-color);
+}
+
+.txt-accent {
+    color: var(--accent-color) ;
+}
+
+.bgc-accent {
+    background-color: var(--accent-color) !important;
+}
+
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-secondary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* Icon Colors */
+.icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--primary-color);
+}
+
+.card-body {
+    background-color: var(--background-light);
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Testimonial Section */
+.carousel-inner blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+/* Pastikan tombol memiliki tinggi yang sama */
+.btn {
+    display: flex;
+    align-items: center; /* Teks sejajar secara vertikal */
+    justify-content: center; /* Teks sejajar secara horizontal */
+    min-height: 50px; /* Sesuaikan nilai ini dengan tinggi yang kamu inginkan */
+}
+
+.btn-cstm{
+    display: flex;
+    align-items: center; /* Teks sejajar secara vertikal */
+    justify-content: center; /* Teks sejajar secara horizontal */
+    min-height: 37px;
+}
+
+/* Aturan khusus untuk layar tablet (768px - 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .btn {
+        min-height: 60px; /* Sesuaikan agar pas untuk tampilan tablet */
+    }
+}
+
