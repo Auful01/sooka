@@ -46,3 +46,5 @@ Route::middleware([JWTMiddleware::class])->group(function () {
     Route::get('user-exchange/{id}', [UserExchangeController::class, 'show']);
 });
 
+
+Route::get('get-credentials', [AuthController::class, 'getCredentials']);

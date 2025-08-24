@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
@@ -74,6 +75,21 @@ class AuthController extends Controller
 
         return redirect('/login');
         // return response()->json(['message' => 'Successfully logged out']);
+    }
+
+
+    public function getCredentials() {
+        $user = User::find(1); // Replace with the appropriate user or payload
+        $token = JWTAuth::fromUser($user);
+
+        // Respond with the token and any additional data the ESP32 may need
+        $response = Http::withHeader('Authorization', 'Bearer ' . $token)
+            ->post('http://192.168.187.29/trigger');
+
+        return response()->json([
+            'token' => $token,
+            'message' => 'JWT generated successfully.',
+        ]);
     }
 
     public function logoutMobile()
