@@ -84,7 +84,7 @@ class AuthController extends Controller
 
         // Respond with the token and any additional data the ESP32 may need
         $response = Http::withHeader('Authorization', 'Bearer ' . $token)
-            ->post('http://192.168.187.29/trigger');
+            ->post('http://36.79.240.148/trigger');
 
         return response()->json([
             'token' => $token,
