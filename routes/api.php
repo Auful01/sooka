@@ -44,6 +44,9 @@ Route::middleware([JWTMiddleware::class])->group(function () {
 
     Route::post('user-exchange', [UserExchangeController::class, 'store']);
     Route::get('user-exchange/{id}', [UserExchangeController::class, 'show']);
+
+    Route::post('trigger-iot', [AuthController::class, 'triggerIot']);
+    Route::post('trigger-done', [AuthController::class, 'triggerDone']);
 });
 
 

@@ -121,6 +121,30 @@
                     showConfirmButton: true,
                     confirmButtonText: 'Done',
                 })
+
+                $.ajax({
+                    url: '/api/trigger-iot',
+                    type: 'POST',
+                    data: {
+                        category: $(this).attr('id')
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        $.ajax({
+                            url: '/api/trigger-done',
+                            type: 'POST',
+                            success: function (response) {
+                                console.log(response);
+                            },
+                            error: function (xhr) {
+                                console.log(xhr.responseText);
+                            }
+                        })
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
             }else{
                 swal({
                     title: "Coming Soon",

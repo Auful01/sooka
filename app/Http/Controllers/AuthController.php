@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -77,6 +78,53 @@ class AuthController extends Controller
         // return response()->json(['message' => 'Successfully logged out']);
     }
 
+    public function triggerIot() {
+        $user = auth()->user();
+        $token = JWTAuth::fromUser($user);
+        $category = request('category'); // dari form/request
+        $blynkToken = env('BLYNK_AUTH_TOKEN'); // masukkan di .env
+
+        // Kirim JWT ke V1
+        $jwtResponse = Http::get("https://blynk.cloud/external/api/update", [
+            'token' => $blynkToken,
+            'V1' => $token
+        ]);
+
+           // 2. Paksa ganti nilai V2 → reset dulu
+            $catResponse = Http::get("https://blynk.cloud/external/api/update", [
+                'token' => $blynkToken,
+                'V2' =>  strval($category)
+            ]);
+
+            return response()->json([
+                'jwt_status' => $jwtResponse->successful(),
+                'category_status' => $catResponse->successful(),
+                'message' => 'Trigger sent to IoT device'
+            ]);
+    }
+
+    public function triggerDone(){
+        $blynkToken = env('BLYNK_AUTH_TOKEN'); // masukkan di .env
+
+        // Kirim JWT ke V1
+        $jwtResponse = Http::get("https://blynk.cloud/external/api/update", [
+            'token' => $blynkToken,
+            'V1' => null
+        ]);
+
+           // 2. Paksa ganti nilai V2 → reset dulu
+         $catResponse=  Http::get("https://blynk.cloud/external/api/update", [
+                'token' => $blynkToken,
+                'V2' =>  null
+            ]);
+
+            return response()->json([
+                'jwt_status' => $jwtResponse->successful(),
+                'category_status' => $catResponse->successful(),
+                'message' => 'Trigger sent to IoT device'
+            ]);
+    }
+
 
     public function getCredentials() {
         $user = User::find(1); // Replace with the appropriate user or payload
@@ -84,7 +132,7 @@ class AuthController extends Controller
 
         // Respond with the token and any additional data the ESP32 may need
         $response = Http::withHeader('Authorization', 'Bearer ' . $token)
-            ->post('http://36.79.240.148/trigger');
+            ->post('http://192.168.150.29/trigger');
 
         return response()->json([
             'token' => $token,
