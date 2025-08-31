@@ -114,14 +114,6 @@
         $('body').on('click', '.btn', function () {
             console.log($(this).attr('id'));
             if ($(this).attr('id') == 'non-metal' || $(this).attr('id') == 'metal' ){
-                swal({
-                    title: "Lets Recycle",
-                    text: "Please drop your waste at the nearest recycling center",
-                    icon: "info",
-                    showConfirmButton: true,
-                    confirmButtonText: 'Done',
-                })
-
                 $.ajax({
                     url: '/api/trigger-iot',
                     type: 'POST',
@@ -130,21 +122,35 @@
                     },
                     success: function (response) {
                         console.log(response);
-                        $.ajax({
-                            url: '/api/trigger-done',
-                            type: 'POST',
-                            success: function (response) {
-                                console.log(response);
-                            },
-                            error: function (xhr) {
-                                console.log(xhr.responseText);
-                            }
-                        })
+
                     },
                     error: function (xhr) {
                         console.log(xhr.responseText);
                     }
                 });
+
+                swal({
+                    title: "Lets Recycle",
+                    text: "Please drop your waste at the nearest recycling center",
+                    icon: "info",
+                    showConfirmButton: true,
+                    confirmButtonText: 'Done',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/api/trigger-done',
+                            type: 'POST',
+                            success: function (response) {
+                                console.log(response);
+
+                            },
+                            error: function (xhr) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+
             }else{
                 swal({
                     title: "Coming Soon",
