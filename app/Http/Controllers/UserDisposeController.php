@@ -24,7 +24,6 @@ class UserDisposeController extends Controller
             $data = UserDispose::with('user', 'category')->paginate(10);
         }
 
-
         return view('pages.admin.user_dispose', ['data' => $data]);
     }
 

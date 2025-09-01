@@ -51,8 +51,8 @@
   <section id="home" style="background: #dd4470;">
     <div class="container  d-flex justify-content-center align-items-center text-white" style="height: 100vh; flex-direction: column;">
         <div class="row d-flex bg-white p-5 rounded-4 txt-primary">
-            <div class="col-md-4">
-                Test
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('sakoo/green_sakoo.png') }}" alt="" class="img-fluid" style="max-height: 200px">
             </div>
             <div class="col-md-8">
                 Sakoo-bank is AI baseed smart wasted management system for public places that utilize advanced technology to facilitate the sorting, collecting and simplify the recycling.
@@ -69,9 +69,9 @@
             <h1 class="text-center py-5">ABOUT US</h1>
             <div class="row d-flex">
                 <div class="col-md-4 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{ asset('sakoo/sakoo mascot blush.png') }}" alt="" class="img-fluid" style="max-height: 200px">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 my-auto">
                     <p class="txt-secondary">Sakoo is derived from the Indonesian phrase SAMPAH KU means “my waste.” It’s an AI-powered smart waste management system that simplifies waste sorting, collection, and recycling in public spaces.</p>
                     <button class="btn btn-sm bt-primary px-4 rounded-4" >
                         Learn More
@@ -109,19 +109,19 @@
             </div>
             <div class="row d-flex justify-content-center txt-primary">
                 <div class="col-md-3 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{asset('sakoo/kayla.png')}}" class="img-fluid" style="max-height: 200px;"  alt="">
                     <h3 class="mt-4">Kayla</h3>
                 </div>
                 <div class="col-md-3 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{asset('sakoo/mayra.png')}}" class="img-fluid" style="max-height: 200px;"  alt="">
                     <h3 class="mt-4">Mayra</h3>
                 </div>
                 <div class="col-md-3 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{asset('sakoo/kayla_2.png')}}" class="img-fluid" style="max-height: 200px;"  alt="">
                     <h3 class="mt-4">Kayla</h3>
                 </div>
                 <div class="col-md-3 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{asset('sakoo/cinta.png')}}" class="img-fluid" style="max-height: 200px;"  alt="">
                     <h3 class="mt-4">Cinta</h3>
                 </div>
             </div>
@@ -136,14 +136,14 @@
             </div>
             <div class="row d-flex justify-content-center txt-primary">
                 <div class="col-md-6 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{asset('sakoo/sakoo_app.png')}}" class="img-fluid" style="max-height: 200px;" alt="">
                     <h3 class="mt-4">Application</h3>
                     <p>
                         Apps shows location of nearby sakoo-bank, track their waste managements, and monitor the points which can be redeemed for goods at Sakoo vending machines.
                     </p>
                 </div>
                 <div class="col-md-6 text-center">
-                    <img src="https://via.placeholder.com/200" alt="">
+                    <img src="{{asset('sakoo/sakoo_machine.png')}}" class="img-fluid" style="max-height: 200px;" alt="">
                     <h3 class="mt-4">SAKOO-BANK</h3>
                     <p>
                         An AI-powered waste-sorting machine for public spaces that uses advanced sensors to automatically identify and sort waste. Users can exchange their earned points for goods in Sakoo bank
