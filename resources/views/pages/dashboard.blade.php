@@ -8,13 +8,13 @@
             <div class="row d-flex">
                 <div class="col-md-6 text-center" style="text-decoration: none">
                     <a href="/category">
-                        <img src="https://via.placeholder.com/200" alt="">
+                        <img src="{{asset('sakoo/sakoo_machine.png')}}" class="img-fluid" style="max-height: 200px;" alt="">
                         <p class="mt-4 txt-primary">Dispose</p>
                     </a>
                 </div>
                 <div class="col-md-6 text-center" style="text-decoration: none">
                     <a href="/exchange">
-                        <img src="https://via.placeholder.com/200" alt="">
+                        <img src="{{asset('sakoo/green_sakoo.png')}}" class="img-fluid" style="max-height: 200px;" alt="">
                         <p class="mt-4 txt-primary">Exchange</p>
                     </a>
                 </div>

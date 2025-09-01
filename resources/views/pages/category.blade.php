@@ -4,7 +4,7 @@
 
    <div class="container ">
     <div class="d-flex justify-content-end mt-5">
-        <a href="/dashboard" class="btn btn-primary btn-sm w-20 px-4 ">
+        <a href="/dashboard" class="btn btn-primary btn-sm w-20 px-4 " id="back-btn">
             <
         </a>
     </div>
@@ -13,33 +13,33 @@
     <div class="row d-flex mt-5 justify-content-around">
         <div class="col-md-2 text-center" style="text-decoration: none">
             <button class="btn d-flex flex-column align-items-center" id="non-metal">
-                <img src="https://via.placeholder.com/200" alt="" class="img-fluid">
+                <img src="{{asset('sakoo/organic.png')}}" alt="" class="img-fluid">
                 <p class="mt-4 txt-primary text-center">Non-Metal</p>
             </button>
 
         </div>
         <div class="col-md-2 text-center" style="text-decoration: none">
             <button class="btn d-flex flex-column align-items-center" id="metal">
-                <img src="https://via.placeholder.com/200" alt="" class="img-fluid">
+                <img src="{{asset('sakoo/can.png')}}" alt="" class="img-fluid">
                 <p class="mt-4 txt-primary text-center">Metal</p>
             </button>
         </div>
         <div class="col-md-2 text-center" style="text-decoration: none">
             <button class="btn d-flex flex-column align-items-center" id="paper">
-                <img src="https://via.placeholder.com/200" alt="" class="img-fluid">
+                <img src="{{asset('sakoo/paperbag.png')}}" alt="" class="img-fluid">
                 <p class="mt-4 txt-primary text-center">Paper</p>
             </button>
         </div>
         <div class="col-md-2 text-center" style="text-decoration: none">
             <button class="btn d-flex flex-column align-items-center" id="plastic">
-                <img src="https://via.placeholder.com/200" alt="" class="img-fluid">
+                <img src="{{asset('sakoo/battery.png')}}" alt="" class="img-fluid">
                 <p class="mt-4 txt-primary text-center">Plastic</p>
             </button>
         </div>
 
         <div class="col-md-2 text-center" style="text-decoration: none">
             <button class="btn d-flex flex-column align-items-center" id="e-waste">
-                <img src="https://via.placeholder.com/200" alt="" class="img-fluid">
+                <img src="{{asset('sakoo/plasticbag.png')}}" alt="" class="img-fluid">
                 <p class="mt-4 txt-primary text-center">E-waste</p>
             </button>
         </div>
@@ -113,52 +113,55 @@
         // });
         $('body').on('click', '.btn', function () {
             console.log($(this).attr('id'));
-            if ($(this).attr('id') == 'non-metal' || $(this).attr('id') == 'metal' ){
-                $.ajax({
-                    url: '/api/trigger-iot',
-                    type: 'POST',
-                    data: {
-                        category: $(this).attr('id')
-                    },
-                    success: function (response) {
-                        console.log(response);
+            if ( $(this).attr('id') != 'back-btn') {
+                if ($(this).attr('id') == 'non-metal' || $(this).attr('id') == 'metal'){
+                    $.ajax({
+                        url: '/api/trigger-iot',
+                        type: 'POST',
+                        data: {
+                            category: $(this).attr('id')
+                        },
+                        success: function (response) {
+                            console.log(response);
 
-                    },
-                    error: function (xhr) {
-                        console.log(xhr.responseText);
-                    }
-                });
+                        },
+                        error: function (xhr) {
+                            console.log(xhr.responseText);
+                        }
+                    });
 
-                swal({
-                    title: "Lets Recycle",
-                    text: "Please drop your waste at the nearest recycling center",
-                    icon: "info",
-                    showConfirmButton: true,
-                    confirmButtonText: 'Done',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: '/api/trigger-done',
-                            type: 'POST',
-                            success: function (response) {
-                                console.log(response);
+                    swal({
+                        title: "Lets Recycle",
+                        text: "Please drop your waste at the nearest recycling center",
+                        icon: "info",
+                        showConfirmButton: true,
+                        confirmButtonText: 'Done',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: '/api/trigger-done',
+                                type: 'POST',
+                                success: function (response) {
+                                    console.log(response);
 
-                            },
-                            error: function (xhr) {
-                                console.log(xhr.responseText);
-                            }
-                        });
-                    }
-                });
+                                },
+                                error: function (xhr) {
+                                    console.log(xhr.responseText);
+                                }
+                            });
+                        }
+                    });
 
-            }else{
-                swal({
-                    title: "Coming Soon",
-                    text: "This feature is coming soon",
-                    icon: "warning",
-                    timer: 1500
-                })
+                }else{
+                    swal({
+                        title: "Coming Soon",
+                        text: "This feature is coming soon",
+                        icon: "warning",
+                        timer: 1500
+                    })
+                }
             }
+
         });
     </script>
 @endpush
