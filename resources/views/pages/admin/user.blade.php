@@ -146,9 +146,11 @@
                         title: 'User added successfully',
                         showConfirmButton: false,
                         timer: 1500
+                    }).then(() => {
+                        $('#add-modal-user').modal('hide');
+                        window.location.reload();
                     });
 
-                    window.location.reload();
                 },
                 error: function(response) {
                     swal({
