@@ -147,6 +147,8 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
+
+                    window.location.reload();
                 },
                 error: function(response) {
                     swal({
@@ -155,6 +157,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
+
                 }
             });
         });
